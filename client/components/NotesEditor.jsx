@@ -23,6 +23,11 @@ const NotesEditor = React.createClass({
     },
 
     handleColorChange(event){
+        document.querySelectorAll('.colorPicker').forEach(function(item){
+           item.removeAttribute('id');
+        });
+        event.target.setAttribute('id', "activeColorBtn");
+
         this.setState({
             color: event.target.getAttribute('data-color')
         })
@@ -60,23 +65,28 @@ const NotesEditor = React.createClass({
                     onChange={this.handleTextChange}/>
                 <div className='NoteEditorColor'>
                     <div
-                        className='NoteEditorColorRed'
+                        className='colorPicker NoteEditorColorWhite'
+                        data-color='white'
+                        id='activeColorBtn'
+                        onClick={this.handleColorChange}></div>
+                    <div
+                        className='colorPicker NoteEditorColorRed'
                         data-color='#ff0000'
                         onClick={this.handleColorChange}></div>
                     <div
-                        className='NoteEditorColorOrange'
+                        className='colorPicker NoteEditorColorOrange'
                         data-color='#ff8000'
                         onClick={this.handleColorChange}></div>
                     <div
-                        className='NoteEditorColorGreen'
+                        className='colorPicker NoteEditorColorGreen'
                         data-color='#bfff00'
                         onClick={this.handleColorChange}></div>
                     <div
-                        className='NoteEditorColorBlue'
+                        className='colorPicker NoteEditorColorBlue'
                         data-color='#00ffff'
                         onClick={this.handleColorChange}></div>
                     <div
-                        className='NoteEditorColorMagento'
+                        className='colorPicker NoteEditorColorMagento'
                         data-color='#bf00ff'
                         onClick={this.handleColorChange}></div>
                 </div>
